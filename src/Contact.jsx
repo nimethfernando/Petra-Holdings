@@ -56,7 +56,7 @@ export default function ContactPage() {
         </div>
         <div className="contact-hero-right">
           {[
-            { label: 'RFP Processing Unit', val: 'estimates@petraholdings.com', icon: '✉' },
+            { label: 'RFP Processing Unit', val: 'estimates@petraconstruction.com', icon: '✉' },
             { label: 'Tele-Schedules', val: '+1 (800) 555-PETRA', icon: '📞' }
           ].map((item, index) => (
             <div key={index} className="hero-info-pill">
@@ -79,14 +79,14 @@ export default function ContactPage() {
               <div className="c-card-icon">🏢</div>
               <div>
                 <div className="c-card-label">Commercial Asset Desk</div>
-                <div className="c-card-val">dev.procure@petraholdings.com</div>
+                <div className="c-card-val">dev.procure@petraconstruction.com</div>
               </div>
             </div>
             <div className="c-card">
               <div className="c-card-icon">⚡</div>
               <div>
                 <div className="c-card-label">Substructure Tenders</div>
-                <div className="c-card-val">civil.rfp@petraholdings.com</div>
+                <div className="c-card-val">civil.rfp@petraconstruction.com</div>
               </div>
             </div>
           </div>
@@ -183,7 +183,7 @@ export default function ContactPage() {
                 checked={formData.agree} onChange={e => setFormData({...formData, agree: e.target.checked})}
               />
               <label htmlFor="agree-check">
-                I authorize Petra Holdings to catalog this documentation for the generation of structural evaluation estimates. View our <a href="#privacy">Privacy Directive Policy</a>.
+                I authorize Petra Construction to catalog this documentation for the generation of structural evaluation estimates. View our <a href="#privacy">Privacy Directive Policy</a>.
               </label>
             </div>
 
@@ -200,7 +200,7 @@ export default function ContactPage() {
         <div className="offices-label">Global Offices</div>
         <div className="offices-row">
           {[
-            { flag: '🇺🇸', city: 'New York', role: 'HQ & Commercial', addr: 'Petra Holdings Tower, Level 8\n10 Hudson Yards, New York, NY 10001' },
+            { flag: '🇺🇸', city: 'New York', role: 'HQ & Commercial', addr: 'Petra Construction Tower, Level 8\n10 Hudson Yards, New York, NY 10001' },
             { flag: '🇬🇧', city: 'London', role: 'European Operations', addr: '22 Bishopsgate, 34th Floor\nLondon, EC2N 4BQ, United Kingdom' },
             { flag: '🇦🇪', city: 'Dubai', role: 'MENA Infrastructure', addr: 'DIFC Gate Building, Suite 412\nDubai International Financial Centre' }
           ].map((o, i) => (

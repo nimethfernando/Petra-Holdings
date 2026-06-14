@@ -70,7 +70,7 @@ const process = [
   { n: "04", t: "Delivery & Handover", d: "Site mobilisation, quality inspections, commissioning, and O&M documentation." },
 ];
 
-export default function PetraHoldings() {
+export default function PetraConstruction() {
   const [page, setPage] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -98,7 +98,10 @@ export default function PetraHoldings() {
     <>
       {/* NAV */}
       <nav className={`ph-nav ${page === "contact" ? "solid" : scrolled ? "scrolled" : ""}`}>
-        <div className="nav-logo" onClick={() => go("home")}>PETRA <span>HOLDINGS</span></div>
+        <div className="nav-logo" onClick={() => go("home")} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+          <img src="/my-logo.png" alt="Petra Logo" style={{ width: '100px', height: '100px' }} />
+          PETRA <span>CONSTRUCTION</span>
+        </div>
         <ul className="nav-links">
           {["home","services","projects","about","process"].map(l => (
             <li key={l}><a href={`#${l}`} onClick={e => { e.preventDefault(); go("home", l); }}>{l}</a></li>
@@ -130,7 +133,7 @@ export default function PetraHoldings() {
             <div className="hero-left">
               <div className="hero-tag">Solid Foundations. Timeless Structures.</div>
               <h1 className="hero-h1">Engineering<em>Excellence</em></h1>
-              <p className="hero-sub">From complex industrial complexes to landmark commercial infrastructure — Petra Holdings delivers precision-engineered, sustainably built environments that endure.</p>
+              <p className="hero-sub">From complex industrial complexes to landmark commercial infrastructure — Petra Construction delivers precision-engineered, sustainably built environments that endure.</p>
               <div className="hero-btns">
                 <a href="#projects" className="btn-p" onClick={e => { e.preventDefault(); go("home","projects"); }}>Explore Portfolio</a>
                 <button className="btn-g" onClick={() => go("contact")}>Get a Quote</button>
@@ -228,9 +231,11 @@ export default function PetraHoldings() {
             <div className="abt-inner">
               <Reveal>
                 <div className="abt-vis">
-                  <div className="abt-vis-in"><div className="big-ico">🏛️</div></div>
+                  <div className="abt-vis-in">
+                    <img src="/apple-touch-icon.png" alt="Petra Badge Logo" style={{ width: '64px', height: '64px', borderRadius: '12px' }} />
+                  </div>
                   <div className="abt-acc1" /><div className="abt-acc2" />
-                  <div className="abt-badge">Est. 2006 · Petra Holdings</div>
+                  <div className="abt-badge">Est. 2006 · Petra Construction</div>
                 </div>
               </Reveal>
               <div>
@@ -238,7 +243,7 @@ export default function PetraHoldings() {
                   <div className="stag">Corporate Overview</div>
                   <h2 className="sh">Uncompromising Standards.<br />Transparent Execution.</h2>
                   <div className="sdiv" />
-                  <p className="ssub">At Petra Holdings, we bridge engineered reality with architectural vision. Every project is guided by our commitment to site safety, sustainable material lifecycles, and predictive budget control.</p>
+                  <p className="ssub">At Petra Construction, we bridge engineered reality with architectural vision. Every project is guided by our commitment to site safety, sustainable material lifecycles, and predictive budget control.</p>
                 </Reveal>
                 <div className="feat-list">
                   {[
@@ -301,7 +306,10 @@ export default function PetraHoldings() {
       <footer className="ph-footer">
         <div className="ft-top">
           <div>
-            <div className="ft-brand" onClick={() => go("home")}>PETRA <span>HOLDINGS</span></div>
+            <div className="ft-brand" onClick={() => go("home")} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+              <img src="/favicon-16x16.png" alt="Petra Footer Logo" />
+              PETRA <span>CONSTRUCTION</span>
+            </div>
             <p className="ft-tag">Architectural &amp; Structural Infrastructure Management since 2006.</p>
           </div>
           <div>
@@ -323,14 +331,14 @@ export default function PetraHoldings() {
           <div>
             <div className="ft-ct">Contact</div>
             <ul className="ft-links">
-              <li><a href="mailto:estimates@petraholdings.com">estimates@petraholdings.com</a></li>
+              <li><a href="mailto:estimates@petraconstruction.com">estimates@petraconstruction.com</a></li>
               <li><a href="tel:+18005557387">+1 (800) 555 PETRA</a></li>
               <li><span onClick={() => go("contact")}>Open Contact Page →</span></li>
             </ul>
           </div>
         </div>
         <div className="ft-bot">
-          <div className="ft-copy">© {new Date().getFullYear()} Petra Holdings. All rights reserved.</div>
+          <div className="ft-copy">© {new Date().getFullYear()} Petra Construction. All rights reserved.</div>
           <div className="ft-badge"><div className="badge-dot" />All systems operational</div>
         </div>
       </footer>
