@@ -99,7 +99,7 @@ export default function PetraConstruction() {
       {/* NAV */}
       <nav className={`ph-nav ${page === "contact" ? "solid" : scrolled ? "scrolled" : ""}`}>
         <div className="nav-logo" onClick={() => go("home")} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-          <img src="/my-logo.png" alt="Petra Logo" style={{ width: '100px', height: '100px' }} />
+          <img src="/my-logo.png" alt="Petra Logo" style={{ width: '120px', height: '120px' }} />
           PETRA <span>CONSTRUCTION</span>
         </div>
         <ul className="nav-links">
