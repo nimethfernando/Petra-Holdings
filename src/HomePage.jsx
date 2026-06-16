@@ -53,11 +53,176 @@ const services = [
   { ico: "📊", title: "Project & Cost Management", desc: "Rigorous quantity surveying, transparent BOQ preparation, realistic cost estimation, on-site supervision, and strict timeline controls.", n: "04" },
 ];
 
+/* ── Auto-detect all images from each project folder using Vite glob ── */
+const allProjectImages = {
+  "lake-road-dehiwala": Object.values(
+    import.meta.glob("/src/assets/projects/lake-road-dehiwala/*.{jpg,jpeg,png,webp}", { eager: true })
+  ).map(m => m.default),
+
+  "kalutara-hotel": Object.values(
+    import.meta.glob("/src/assets/projects/kalutara-hotel/*.{jpg,jpeg,png,webp}", { eager: true })
+  ).map(m => m.default),
+
+  "kalawana-ratnapura": Object.values(
+    import.meta.glob("/src/assets/projects/kalawana-ratnapura/*.{jpg,jpeg,png,webp}", { eager: true })
+  ).map(m => m.default),
+};
+
 const projects = [
-  { type: "Residential (Completed)", title: "Lake Road Project, Dehiwala", year: "Tropical-modern waterside luxury home", bg: "bg1" },
-  { type: "Hospitality (Completed)", title: "Kalutara Hotel Beachfront Project", year: "Robust concrete frame, sea-facing balconies", bg: "bg2" },
-  { type: "Residential (Ongoing)", title: "Kalawana Luxury Home, Ratnapura", year: "Precision concrete and engineered steel roof structures", bg: "bg3" },
-];
+  {
+    type: "Residential (Completed)",
+    title: "Lake Road Project, Dehiwala",
+    year: "Tropical-modern waterside luxury home",
+    bg: "bg1",
+    folder: "lake-road-dehiwala",
+  },
+  {
+    type: "Hospitality (Completed)",
+    title: "Kalutara Hotel Beachfront Project",
+    year: "Robust concrete frame, sea-facing balconies",
+    bg: "bg2",
+    folder: "kalutara-hotel",
+  },
+  {
+    type: "Residential (Ongoing)",
+    title: "Kalawana Luxury Home, Ratnapura",
+    year: "Precision concrete and engineered steel roof structures",
+    bg: "bg3",
+    folder: "kalawana-ratnapura",
+  },
+].map(p => ({ ...p, photos: allProjectImages[p.folder] ?? [] }));
+
+/* ── Project Card with auto-cycling slideshow ── */
+function ProjectCard({ p, index }) {
+  const hasPhotos = p.photos.length > 0;
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const timerRef = useRef(null);
+
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    if (!hasPhotos || p.photos.length < 2) return;
+    timerRef.current = setInterval(() => {
+      setActive(prev => (prev + 1) % p.photos.length);
+    }, 2000);
+  };
+
+  useEffect(() => {
+    if (!paused) startTimer();
+    else clearInterval(timerRef.current);
+    return () => clearInterval(timerRef.current);
+  }, [paused, p.photos.length]);
+
+  const goTo = (i) => {
+    setActive(i);
+    if (!paused) startTimer();
+  };
+
+  return (
+    <div
+      className="prj-card"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Photo layers — crossfade, or fallback gradient */}
+      {hasPhotos ? p.photos.map((src, i) => (
+        <div
+          key={i}
+          className={`prj-bg ${p.bg}`}
+          style={{
+            backgroundImage: `url(${src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: i === active ? 1 : 0,
+            transition: "opacity 0.8s ease",
+            position: "absolute",
+            inset: 0,
+          }}
+        />
+      )) : (
+        <div className={`prj-bg ${p.bg}`} />
+      )}
+
+      <div className="prj-pat" />
+      <div className="prj-ov" />
+
+      {/* Photo selector dots + folder label — only shown when photos exist */}
+      {hasPhotos && (
+        <div
+          style={{
+            position: "absolute",
+            top: "1rem",
+            right: "1rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-end",
+            gap: "0.5rem",
+            zIndex: 10,
+          }}
+        >
+          {/* Folder label */}
+          <div style={{
+            fontSize: "0.6rem",
+            letterSpacing: "1.5px",
+            textTransform: "uppercase",
+            color: "rgba(255,255,255,0.5)",
+            background: "rgba(0,0,0,0.45)",
+            padding: "3px 8px",
+            borderRadius: "3px",
+            backdropFilter: "blur(4px)",
+          }}>
+            📁 {p.folder}
+          </div>
+          {/* Dot selectors */}
+          <div style={{ display: "flex", gap: "6px" }}>
+            {p.photos.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                style={{
+                  width: i === active ? "22px" : "8px",
+                  height: "8px",
+                  borderRadius: "4px",
+                  border: "none",
+                  background: i === active ? "var(--gold, #C9A84C)" : "rgba(255,255,255,0.35)",
+                  cursor: "pointer",
+                  padding: 0,
+                  transition: "all 0.3s ease",
+                }}
+                aria-label={`Photo ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Slide counter */}
+      {hasPhotos && (
+        <div style={{
+          position: "absolute",
+          top: "1rem",
+          left: "1rem",
+          zIndex: 10,
+          fontSize: "0.65rem",
+          color: "rgba(255,255,255,0.5)",
+          background: "rgba(0,0,0,0.4)",
+          padding: "3px 8px",
+          borderRadius: "3px",
+          backdropFilter: "blur(4px)",
+          letterSpacing: "1px",
+        }}>
+          {active + 1} / {p.photos.length}
+        </div>
+      )}
+
+      <div className="prj-cnt">
+        <div className="prj-type">{p.type}</div>
+        <div className="prj-title">{p.title}</div>
+        <div className="prj-year">{p.year}</div>
+      </div>
+    </div>
+  );
+}
 
 const team = [
   { name: "Gayindu Umesh Perera", role: "Director / Founder Engineer", desc: "BSc in Civil Engineering, RMIT University, Australia. Leads engineering, design, and overall project delivery with international standards." },
@@ -215,16 +380,7 @@ export default function PetraConstruction() {
             </div>
             <div className="prj-grid">
               {projects.map((p, i) => (
-                <div className="prj-card" key={i}>
-                  <div className={`prj-bg ${p.bg}`} />
-                  <div className="prj-pat" />
-                  <div className="prj-ov" />
-                  <div className="prj-cnt">
-                    <div className="prj-type">{p.type}</div>
-                    <div className="prj-title">{p.title}</div>
-                    <div className="prj-year">{p.year}</div>
-                  </div>
-                </div>
+                <ProjectCard key={i} p={p} index={i} />
               ))}
             </div>
           </section>
@@ -355,7 +511,7 @@ export default function PetraConstruction() {
         </div>
         <div className="ft-bot">
           <div className="ft-copy">© 2026 Petra Construction Co. (Pvt.) Ltd. All engineering rights reserved.</div>
-          <div className="ft-badge"><div className="badge-dot" style={{ backgroundColor: "#55efc4" }} />Site Managed by Registered Engineers</div>
+          <div className="ft-badge"><div className="badge-dot" style={{ backgroundColor: "#55efc4" }} />Site Managed by Nimeth</div>
         </div>
       </footer>
     </>

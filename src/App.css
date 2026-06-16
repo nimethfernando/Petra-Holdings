@@ -68,6 +68,11 @@
     padding: 32px 20px 24px;
     gap: 18px;
   }
+
+  @media (max-width: 480px) {
+    padding: 24px 16px 20px;
+    gap: 14px;
+  }
 }
 
 #next-steps {
@@ -80,6 +85,9 @@
     padding: 32px;
     @media (max-width: 1024px) {
       padding: 24px 20px;
+    }
+    @media (max-width: 480px) {
+      padding: 20px 16px;
     }
   }
 
@@ -151,6 +159,20 @@
       box-sizing: border-box;
     }
   }
+
+  @media (max-width: 480px) {
+    margin-top: 16px;
+    gap: 6px;
+
+    li {
+      flex: 1 1 100%;
+    }
+
+    a {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+  }
 }
 
 #spacer {
@@ -158,6 +180,9 @@
   border-top: 1px solid var(--border);
   @media (max-width: 1024px) {
     height: 48px;
+  }
+  @media (max-width: 480px) {
+    height: 32px;
   }
 }
 

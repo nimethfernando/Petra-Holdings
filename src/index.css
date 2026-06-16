@@ -1,6 +1,6 @@
 /* ── External Fonts & Core Framework Utilities (Must be at the top) ── */
-@import "tailwindcss"; 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+@import "tailwindcss"; 
 
 /* ── Global Typography & Layout Reset ── */
 html, body, #root {
@@ -793,6 +793,7 @@ code, .counter {
 @media (max-width: 1024px) {
   .ph-nav { padding: 0 2rem; }
   .nav-links { display: none; }
+  .nav-cta { display: none; }
   .hamburger { display: flex; }
   .ph-hero { grid-template-columns: 1fr; padding: 120px 2rem 4rem; gap: 4rem; }
   .hero-left { padding-right: 0; text-align: center; }
@@ -800,21 +801,45 @@ code, .counter {
   .hero-sub { margin-inline: auto; }
   .hero-btns { justify-content: center; }
   .hero-scroll { display: none; }
-  .ph-services, .ph-projects, .ph-about, .ph-process, .ph-footer { padding: 5rem 2rem; }
+  .ph-services, .ph-projects, .ph-about, .ph-process, .ph-footer, .ph-cta { padding: 5rem 2rem; }
   .srv-grid { grid-template-columns: repeat(2, 1fr); }
   .prj-grid { grid-template-columns: 1fr; }
   .prj-card { grid-column: span 12 !important; height: 360px; }
   .abt-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .abt-vis { order: -1; }
   .proc-steps { grid-template-columns: repeat(2, 1fr); }
   .ft-top { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .hero-right { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 640px) {
   .srv-grid, .proc-steps, .ft-top { grid-template-columns: 1fr; }
   .stat-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .stat-div { display: none; }
-  .hero-h1 { font-size: 2.6rem; }
+  .hero-h1 { font-size: 2.4rem; letter-spacing: -1px; }
+  .hero-btns { flex-direction: column; align-items: stretch; }
+  .btn-p, .btn-g { text-align: center; justify-content: center; width: 100%; }
   .ft-bot { flex-direction: column; gap: 1rem; text-align: center; }
+  .prj-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .prj-card { height: 280px; padding: 1.5rem; }
+  .ph-services, .ph-projects, .ph-about, .ph-process, .ph-footer, .ph-cta { padding: 4rem 1.25rem; }
+  .abt-vis { height: 280px; }
+  .stat-card { padding: 1.5rem 1.25rem; }
+  .stat-num { font-size: 2.2rem; }
+  .hero-right { display: none; }
+}
+
+/* ── 480px — Tight Small Phones ── */
+@media (max-width: 480px) {
+  .ph-nav { padding: 0 1rem; height: 64px; }
+  .ph-hero { padding: 100px 1.25rem 3rem; gap: 2.5rem; }
+  .hero-h1 { font-size: 2rem; }
+  .hero-tag { font-size: 0.72rem; }
+  .hero-sub { font-size: 0.95rem; }
+  .sh { font-size: 1.75rem; }
+  .ft-top { gap: 2rem; }
+  .srv-card { padding: 2rem 1.25rem; }
+  .proc-step { padding: 1.75rem 1.25rem; }
 }
 
 /* ==========================================================================
@@ -1255,16 +1280,36 @@ code, .counter {
    ── Contact Screen Responsive Breakpoints ──
    ========================================================================== */
 @media (max-width: 1024px) {
-  .contact-hero { grid-template-columns: 1fr; padding: 120px 2rem 4rem; gap: 3rem; }
+  .contact-hero { grid-template-columns: 1fr; padding: 100px 2rem 4rem; gap: 3rem; }
   .contact-hero-sub { max-width: 100%; }
-  .contact-body { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 4rem; }
+  .contact-body { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
   .contact-sidebar { position: static; }
   .offices-section { padding: 4rem 2rem; }
   .offices-row { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hero-info-pill:hover { transform: none; }
 }
 
 @media (max-width: 640px) {
   .form-grid-2 { grid-template-columns: 1fr; gap: 0; }
-  .form-body { padding: 2rem 1.5rem; }
-  .form-header { padding: 2rem 1.5rem; }
+  .form-body { padding: 1.75rem 1.25rem; }
+  .form-header { padding: 1.75rem 1.25rem; }
+  .contact-hero { padding: 90px 1.25rem 3rem; }
+  .contact-hero-h { font-size: clamp(2.8rem, 12vw, 4.5rem); }
+  .contact-body { padding: 2.5rem 1.25rem; gap: 2rem; }
+  .offices-section { padding: 2.5rem 1.25rem; }
+  .offices-row { gap: 1rem; }
+  .submit-btn { padding: 15px 24px; font-size: 0.72rem; }
+  .form-footer { flex-direction: column; align-items: stretch; }
+  .submit-btn { min-width: unset; width: 100%; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .contact-hero { padding: 80px 1rem 2.5rem; }
+  .contact-body { padding: 2rem 1rem; }
+  .form-body { padding: 1.25rem 1rem; }
+  .form-header { padding: 1.25rem 1rem; }
+  .offices-section { padding: 2rem 1rem; }
+  .c-card { padding: 0.9rem 1rem; }
+  .office-card { padding: 1.75rem 1.25rem; }
+  .availability-block { padding: 1rem; }
 }
