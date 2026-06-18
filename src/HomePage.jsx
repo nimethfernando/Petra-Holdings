@@ -482,7 +482,7 @@ export default function PetraConstruction() {
             <div className="ft-brand" onClick={() => go("home")} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
               PETRA <span>CONSTRUCTION</span>
             </div>
-            <p className="ft-tag" style={{ color: '#aaa', fontSize: '0.85rem' }}>Petra Construction Co. (Pvt.) Ltd.<br />Solid Foundations. Timeless Structures. [2026 Update]</p>
+            <p className="ft-tag" style={{ color: '#aaa', fontSize: '0.85rem' }}>Petra Construction Co. (Pvt.) Ltd.<br />Solid Foundations. Timeless Structures.</p>
           </div>
           <div>
             <div className="ft-ct">Navigation</div>
@@ -511,7 +511,7 @@ export default function PetraConstruction() {
         </div>
         <div className="ft-bot">
           <div className="ft-copy">© 2026 Petra Construction Co. (Pvt.) Ltd. All engineering rights reserved.</div>
-          <div className="ft-badge"><div className="badge-dot" style={{ backgroundColor: "#55efc4" }} />Site Managed by Nimeth</div>
+          <div className="ft-badge"><div className="badge-dot" style={{ backgroundColor: "#55efc4" }} />Site Managed by Nethro Labs</div>
         </div>
       </footer>
     </>
