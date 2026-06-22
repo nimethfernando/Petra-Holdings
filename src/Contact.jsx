@@ -131,7 +131,7 @@ export default function ContactPage() {
 
             {[
               { icon: "🏢", label: "Main Operations Office", val: "71A Lake Road, Attidiya, Dehiwala" },
-              { icon: "✉️", label: "Email Enquiries",        val: <a href="mailto:pcap3@yahoo.com" style={{ color: "inherit" }}>pcap3@yahoo.com</a> },
+              { icon: "✉️", label: "Email Enquiries",        val: <a href="mailto:petraconstructionlk@gmail.com" style={{ color: "inherit" }}>petraconstructionlk@gmail.com</a> },
               { icon: "📞", label: "Direct Tele-Line",       val: "077 735 6371" },
             ].map(({ icon, label, val }, i) => (
               <div key={i} className="c-card" style={{ background: "rgba(255,255,255,0.02)", padding: "1rem", borderRadius: "6px", marginBottom: "1rem", border: "1px solid rgba(255,255,255,0.05)" }}>
@@ -181,7 +181,7 @@ export default function ContactPage() {
               </p>
               <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)", borderRadius: "8px", padding: "1rem 1.5rem", marginBottom: "2rem", fontSize: "0.82rem", color: "#ccc", lineHeight: "1.7" }}>
                 Your enquiry has been forwarded to{" "}
-                <strong style={{ color: "var(--gold, #cfa153)" }}>pcap3@yahoo.com</strong>.<br />
+                <strong style={{ color: "var(--gold, #cfa153)" }}>petraconstructionlk@gmail.com</strong>.<br />
                 For urgent matters call <strong style={{ color: "#fff" }}>077 735 6371</strong>.
               </div>
               <button

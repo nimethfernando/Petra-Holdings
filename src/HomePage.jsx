@@ -359,7 +359,6 @@ export default function PetraConstruction() {
                     <div className="srv-ico">{s.ico}</div>
                     <div className="srv-title">{s.title}</div>
                     <p className="srv-desc">{s.desc}</p>
-                    <div className="srv-arr">Learn more →</div>
                   </div>
                 </Reveal>
               ))}
@@ -512,7 +511,7 @@ export default function PetraConstruction() {
             <ul className="ft-links" style={{ fontSize: "0.85rem", color: "#ccc" }}>
               <li>71A Lake Road, Attidiya, Dehiwala</li>
               <li>Phone: 077 735 6371</li>
-              <li>Email: <a href="mailto:pcap3@yahoo.com">pcap3@yahoo.com</a></li>
+              <li>Email: <a href="petraconstructionlk@gmail.com">petraconstructionlk@gmail.com</a></li>
             </ul>
           </div>
         </div>
