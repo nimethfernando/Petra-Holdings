@@ -91,7 +91,7 @@ export default function ContactPage() {
       }
     } catch (err) {
       console.error("EmailJS Error:", err);
-      setErrorMsg('Something went wrong. Please call us directly on 077 735 6371.');
+      setErrorMsg('Something went wrong. Please call us directly on 077 735 6371 or 077 929 8315.');
       setStatus('error');
     }
   };
@@ -132,13 +132,13 @@ export default function ContactPage() {
             {[
               { icon: "🏢", label: "Main Operations Office", val: "71A Lake Road, Attidiya, Dehiwala" },
               { icon: "✉️", label: "Email Enquiries",        val: <a href="mailto:petraconstructionlk@gmail.com" style={{ color: "inherit" }}>petraconstructionlk@gmail.com</a> },
-              { icon: "📞", label: "Direct Tele-Line",       val: "077 735 6371" },
+              { icon: "📞", label: "Direct Tele-Lines",       val: "077 735 6371 / 077 929 8315" },
             ].map(({ icon, label, val }, i) => (
               <div key={i} className="c-card" style={{ background: "rgba(255,255,255,0.02)", padding: "1rem", borderRadius: "6px", marginBottom: "1rem", border: "1px solid rgba(255,255,255,0.05)" }}>
                 <div className="c-card-icon">{icon}</div>
                 <div>
                   <div className="c-card-label" style={{ fontSize: "0.8rem", color: "#aaa" }}>{label}</div>
-                  <div className="c-card-val"   style={{ color: "#fff", fontSize: "0.95rem" }}>{val}</div>
+                  <div className="c-card-val"   style={{ color: "#fff", fontSize: "0.95rem", lineHeight: "1.4" }}>{val}</div>
                 </div>
               </div>
             ))}
@@ -182,7 +182,7 @@ export default function ContactPage() {
               <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)", borderRadius: "8px", padding: "1rem 1.5rem", marginBottom: "2rem", fontSize: "0.82rem", color: "#ccc", lineHeight: "1.7" }}>
                 Your enquiry has been forwarded to{" "}
                 <strong style={{ color: "var(--gold, #cfa153)" }}>petraconstructionlk@gmail.com</strong>.<br />
-                For urgent matters call <strong style={{ color: "#fff" }}>077 735 6371</strong>.
+                For urgent matters call <strong style={{ color: "#fff" }}>077 735 6371</strong> or <strong style={{ color: "#fff" }}>077 929 8315</strong>.
               </div>
               <button
                 onClick={handleReset}
@@ -240,7 +240,7 @@ export default function ContactPage() {
                   <label style={{ color: "#fff", fontSize: "0.85rem" }}>Direct Contact Phone Line <span style={{ color: "red" }}>*</span></label>
                   <input
                     style={{ background: "rgba(0,0,0,0.2)", border: "1px solid rgba(255,255,255,0.1)", padding: "0.75rem", borderRadius: "4px", color: "#fff", width: "100%", boxSizing: "border-box" }}
-                    type="text" required placeholder="077 XXXXXXX"
+                    type="text" required placeholder="e.g., 0777356371"
                     value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })}
                   />
                 </div>

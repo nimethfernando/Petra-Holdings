@@ -63,6 +63,10 @@ const allProjectImages = {
     import.meta.glob("/src/assets/projects/kalutara-hotel/*.{jpg,jpeg,png,webp}", { eager: true })
   ).map(m => m.default),
 
+  "nedimala-residence": Object.values(
+    import.meta.glob("/src/assets/projects/nedimala-reidence/*.{jpg,jpeg,png,webp}", { eager: true })
+  ).map(m => m.default),
+
   "kalawana-ratnapura": Object.values(
     import.meta.glob("/src/assets/projects/kalawana-ratnapura/*.{jpg,jpeg,png,webp}", { eager: true })
   ).map(m => m.default),
@@ -89,6 +93,13 @@ const projects = [
     year: "Precision concrete and engineered steel roof structures",
     bg: "bg3",
     folder: "kalawana-ratnapura",
+  },
+  {
+    type: "Residential (Completed)",
+    title: "Three-Storey Luxury Residence – Nedimala, Sri Lanka",
+    year: "Architect-designed structural framing and premium structural finishes",
+    bg: "bg4",
+    folder: "nedimala-residence",
   },
 ].map(p => ({ ...p, photos: allProjectImages[p.folder] ?? [] }));
 
@@ -315,7 +326,7 @@ export default function PetraConstruction() {
                 <div className="stat-desc">Completed and active elite developments</div>
               </div>
               <div className="stat-card">
-                <div className="stat-num"><CountUp end={3} suffix="" /></div>
+                <div className="stat-num"><CountUp end={4} suffix="" /></div>
                 <div className="stat-label">Signature Case Studies</div>
                 <div className="stat-desc">Luxury residential and hospitality structures</div>
               </div>
@@ -511,7 +522,7 @@ export default function PetraConstruction() {
             <ul className="ft-links" style={{ fontSize: "0.85rem", color: "#ccc" }}>
               <li>71A Lake Road, Attidiya, Dehiwala</li>
               <li>Phone: 077 735 6371</li>
-              <li>Email: <a href="petraconstructionlk@gmail.com">petraconstructionlk@gmail.com</a></li>
+              <li>Email: <a href="mailto:petraconstructionlk@gmail.com">petraconstructionlk@gmail.com</a></li>
             </ul>
           </div>
         </div>
